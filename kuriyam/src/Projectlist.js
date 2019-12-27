@@ -75,13 +75,21 @@ class Projectlist extends React.Component{
 
 
          edit(){
+
+                 var mar=document.getElementById("jan").value;
+                 var apr=document.getElementById("feb").value;
+                 var may=apr-mar;
+       
+                 console.log(may)
             var data = {
                         editid: document.getElementById("editid").value,
                         name: document.getElementById("edname").value,
                         projectname: document.getElementById("projectname").value,
                         number: document.getElementById("ednumber").value,
                         email: document.getElementById("edemail").value,
-                        hourrate: document.getElementById("hourrate").value
+                        hourrate: document.getElementById("hourrate").value,
+                        spenttime:may
+
                     
                     }
                     console.log(data)
@@ -138,6 +146,11 @@ class Projectlist extends React.Component{
 
               <input type="email" className="form-control w-50 space2 " id="edemail" placeholder="email" required/>
               <input type="number" className="form-control w-50 space2 " id="hourrate" placeholder="hourrate" required/>
+
+              <div className="display1">
+              <input type="number" className="form-control w-25" id="jan" placeholder="start time"required/>
+             <input type="number" className="form-control w-25 display ml-4" id="feb" placeholder="end time"required/>
+             </div>  
               <button type="botton" onClick={this.edit} className="btn btn-primary btn-block  mt-4 btn1 ">EDIT</button>
               
               
