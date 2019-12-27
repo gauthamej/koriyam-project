@@ -84,10 +84,11 @@ var con = mysql.createConnection({
         var ednumber =req.body.number;
         var edemail =req.body.email;
         var edhourrate =req.body.hourrate;
+        var espenttime=req.body.spenttime;
 
         console.log(req.body)
         
-var sql=  "UPDATE free SET name='"+edname+"', projectname='"+edprojectname+"', number='"+ednumber+"', email='"+edemail+"',hourrate='"+edhourrate+"' WHERE id = '"+id+"'";
+var sql=  "UPDATE free SET name='"+edname+"', projectname='"+edprojectname+"', number='"+ednumber+"', email='"+edemail+"',hourrate='"+edhourrate+"',spenttime='"+espenttime+"' WHERE id = '"+id+"'";
             con.query(sql,(err,result,fields)=>{
                 
 				
@@ -105,13 +106,10 @@ var sql=  "UPDATE free SET name='"+edname+"', projectname='"+edprojectname+"', n
        
 
        app.post('/spent',function(req,res){
-        var spentid =req.body.spentid;
-        var spentprojectname =req.body.spentprojectname;
-        var spenthourrate =req.body.spenthourrate;
-        var spenttime =req.body.spenttime;
+       var comment=req.body.spentdata;
       
-       var sql= "INSERT INTO time(id,projectname,hourrate,spenttime) VALUES(?,?,?,?,?)";
-       var insert= [spentid,spentprojectname,spenthourrate,spenttime];
+       var sql= "INSERT INTO time(comment) VALUES(?)";
+       var insert= [comment];
        console.log(insert)
        sql=mysql.format(sql,insert);
        con.query(sql,(err,result,fields)=>{
